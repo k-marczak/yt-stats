@@ -5,7 +5,10 @@ import youtube from '../supports/youtube'
 
 class Body extends Component {
     state = {
-
+        tags: [],
+        title: '',
+        channelTitle: '',
+        views: ''
     }
     handleSubmit = async (term) => {
         const response = await youtube.get('/videos',{
@@ -15,15 +18,20 @@ class Body extends Component {
         })
         
         this.setState({
-            everything: response.data.items
+            everything: response.data.items,
+            tags: response.data.items[0].snippet.tags,
+            title: response.data.items[0].snippet.title,
+            channelTitle: response.data.items[0].snippet.channelTitle,
+            views: response.data.items[0].statistics.viewCount
         })
     }
      
-    render(){
+    render(){ 
         return(
             <div className="w-full container mx-auto my-12">
-                <Form handleSubmit={this.handleSubmit}/>
-                <Results />
+                <Form handleFormSubmit={this.handleSubmit}/>
+                <Results tags={this.state.tags} title={this.state.title}
+                channelTitle={this.state.channelTitle} views={this.state.views}/>
             </div>
         )
     }
