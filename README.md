@@ -1,4 +1,4 @@
-# YT Stats 
+# YouTube Stats 
 
 ---
 
@@ -35,5 +35,5 @@ $ npm start
 
 ## Demo
 
-Live demo https://commerce-shop.netlify.app/
+Live demo https://youtube-stats1.netlify.app/
 
